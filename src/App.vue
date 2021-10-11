@@ -1,5 +1,7 @@
 <template>
   <h2>{{ $store.state.name }}</h2>
+  <h2>这是我的第一次构建的过程</h2>
+  <h2>看看到底会不会成功</h2>
   <router-link to="./login">登录</router-link>
   <router-link to="./main">首页</router-link>
   <el-button>哈哈哈</el-button>
