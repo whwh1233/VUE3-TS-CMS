@@ -3,8 +3,20 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import { registerApp } from './global/index'
+import './service/axios_demo'
+
 const app = createApp(App)
+
+// registerApp 是一个函数，可以 app.use 直接使用
+// 注册 element-plus/其他
+registerApp(app)
+// app.use(registerApp)
+// use 传入一个函数 ，自动调用这个函数
+// use 传入一个对象， 自动执行函数内部的 install 方法
+
 app.use(router)
 app.use(store)
-
 app.mount('#app')
+
+console.log(process.env.VUE_APP_BASE_URL)
