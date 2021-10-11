@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 
 import { registerApp } from './global/index'
-import './service/axios_demo'
+// import './service/axios_demo'
+import whRequest from './service'
 
 const app = createApp(App)
 
@@ -20,3 +21,21 @@ app.use(store)
 app.mount('#app')
 
 console.log(process.env.VUE_APP_BASE_URL)
+whRequest.request({
+  url: '/home/multidata',
+  method: 'GET',
+  interceptors: {
+    requestInterceptor: (config) => {
+      console.log('单次请求的拦截器')
+      return config
+    },
+    responseInterceptor: (res) => {
+      console.log('单次响应的拦截器')
+      return res
+    }
+  }
+})
+whRequest.request({
+  url: '/home/multidata',
+  method: 'GET'
+})

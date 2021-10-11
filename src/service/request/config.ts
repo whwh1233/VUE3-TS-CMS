@@ -16,18 +16,15 @@
 // 生产环境：production
 // 测试环境：test
 let BASE_URL = ''
-let BASE_NAME = ''
+const TIME_OUT = 10000
 if (process.env.NODE_ENV === 'develpoment') {
-  BASE_URL = 'http://www.coderwhy.org'
-  BASE_NAME = 'coderwhy'
+  BASE_URL = 'http://123.207.32.32:8000'
 } else if (process.env.NODE_ENV === 'production') {
   BASE_URL = 'http://www.wh.org'
-  BASE_NAME = 'wh'
 } else {
-  BASE_URL = 'http://www.wwj.org'
-  BASE_NAME = 'wwj'
+  BASE_URL = 'http://123.207.32.32:8000'
 }
 
-export { BASE_NAME, BASE_URL }
+export { BASE_URL, TIME_OUT }
 // 这是直接导出变量的语法
-export const name = ''
+// export const name = ''
