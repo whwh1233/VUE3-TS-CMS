@@ -6,7 +6,7 @@
         <el-input v-model="account.name"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="account.password"></el-input>
+        <el-input v-model="account.password" show-password></el-input>
       </el-form-item>
     </el-form>
   </div>
@@ -16,6 +16,7 @@
 import { ElForm } from 'element-plus'
 import { defineComponent, reactive, ref } from 'vue'
 import rules from '../config/account-config'
+import localCache from '../../../utils/catch'
 
 export default defineComponent({
   setup() {
@@ -23,18 +24,24 @@ export default defineComponent({
       name: '',
       password: ''
     })
-    const loginAction = () => {
-      console.log('真正开始登陆')
+    const formRef = ref<InstanceType<typeof ElForm>>()
+
+    const loginAction = (isKeepPassword: boolean) => {
       formRef.value?.validate((valid) => {
-        console.log(valid)
         if (valid) {
-          console.log('开始真正执行登陆逻辑')
+          // 1. 是否记住密码
+          if (isKeepPassword) {
+            // 需要记住本地缓存\
+            localCache.setCache('name', account.name)
+            localCache.setCache('password', account.password)
+          } else {
+            console.log('不需要进行缓存')
+          }
         } else {
           console.log('不符合要求，需要重新输入')
         }
       })
     }
-    const formRef = ref<InstanceType<typeof ElForm>>()
     return { account, rules, loginAction, formRef }
   }
 })

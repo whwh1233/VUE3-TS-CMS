@@ -36,14 +36,15 @@ export default defineComponent({
     LoginPhone
   },
   setup() {
-    const isKeepPassword = ref(false)
+    const isKeepPassword = ref<boolean>(false)
     const accountRef = ref<InstanceType<typeof LoginAccount>>()
+    const phoneRef = ref<InstanceType<typeof LoginPhone>>()
 
     const handleLoginClick = () => {
-      console.log('按钮被点击了')
-      accountRef.value?.loginAction()
+      console.log('isKeepPassword' + isKeepPassword.value)
+      accountRef.value?.loginAction(isKeepPassword.value)
     }
-    return { isKeepPassword, handleLoginClick, accountRef }
+    return { isKeepPassword, handleLoginClick, accountRef, phoneRef }
   }
 })
 </script>
