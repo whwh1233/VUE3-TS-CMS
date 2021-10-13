@@ -2,9 +2,11 @@ import axios from 'axios'
 import type { AxiosInstance } from 'axios'
 import type { WHRequestInterceptors, WHRequestConfig } from './type'
 
+// import { ElLoading } from 'element-plus'
 class WHRequest {
   instance: AxiosInstance
   interceptors?: WHRequestInterceptors
+
   constructor(config: WHRequestConfig) {
     this.instance = axios.create(config)
     // 从config 中取出的拦截器是 每一个请求对象都需要自定义的拦截器，
@@ -23,11 +25,17 @@ class WHRequest {
     // 后添加的拦截器
     this.instance.interceptors.request.use(
       (config) => {
+        // 去掉 请求 loading
+        // ElLoading.service({
+        //   lock: true,
+        //   text: '正在请求...',
+        //   background: 'rgba(0,0,0,0.5)'
+        // })
         console.log('所有实例都会有的拦截器，请求拦截器')
         return config
       },
       (err) => {
-        console.log('所有实例都会有的拦截器，请求失败拦截器')
+        console.log('所有有请求失败')
         return err
       }
     )

@@ -12,17 +12,14 @@ const whRequest = new WHRequest({
     },
     requestInterceptorCatch: (err) => {
       console.log('这是请求失败的拦截器')
-
       return err
     },
     responseInterceptor: (config) => {
       console.log('这是响应成功的拦截器')
-
       return config
     },
     responseInterceptorCatch: (err) => {
       console.log('这是响应失败的拦截器')
-
       return err
     }
   }

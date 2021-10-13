@@ -3,10 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import 'normalize.css'
+
 import { registerApp } from './global/index'
 // import './service/axios_demo'
 import whRequest from './service'
-
+import './assets/css/index.less'
 const app = createApp(App)
 
 // registerApp 是一个函数，可以 app.use 直接使用
