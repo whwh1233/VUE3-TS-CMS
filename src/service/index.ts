@@ -7,22 +7,22 @@ const whRequest = new WHRequest({
   timeout: TIME_OUT,
   interceptors: {
     requestInterceptor: (config) => {
-      console.log('这是请求的拦截器')
+      // console.log('这是请求的拦截器')
       return config
     },
     requestInterceptorCatch: (err) => {
-      console.log('这是请求失败的拦截器')
+      // console.log('这是请求失败的拦截器')
       return err
     },
     responseInterceptor: (config) => {
-      console.log('这是响应成功的拦截器')
+      // console.log('这是响应成功的拦截器')
       return config
     },
     responseInterceptorCatch: (err) => {
-      console.log('这是响应失败的拦截器')
+      // console.log('这是响应失败的拦截器')
       return err
     }
   }
 })
-console.log(BASE_URL)
+// console.log(BASE_URL)
 export default whRequest

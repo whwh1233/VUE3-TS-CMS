@@ -31,21 +31,21 @@ class WHRequest {
         //   text: '正在请求...',
         //   background: 'rgba(0,0,0,0.5)'
         // })
-        console.log('所有实例都会有的拦截器，请求拦截器')
+        // console.log('所有实例都会有的拦截器，请求拦截器')
         return config
       },
       (err) => {
-        console.log('所有有请求失败')
+        // console.log('所有有请求失败')
         return err
       }
     )
     this.instance.interceptors.response.use(
       (config) => {
-        console.log('所有实例都会有的拦截器，响应拦截器')
+        // console.log('所有实例都会有的拦截器，响应拦截器')
         return config
       },
       (err) => {
-        console.log('所有实例都会有的拦截器，响应失败拦截器')
+        // console.log('所有实例都会有的拦截器，响应失败拦截器')
         return err
       }
     )

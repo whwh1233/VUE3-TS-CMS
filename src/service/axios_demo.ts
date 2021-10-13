@@ -41,7 +41,7 @@ axios
     },
     timeout: 2000
   })
-  .then((res) => console.log(res))
+  .then((res) => res)
 axios
   .post('/post', {
     data: {
@@ -49,14 +49,14 @@ axios
     }
   })
   .then((res) => {
-    console.log(res)
+    res
   })
 
 // 通用方法
 // axios.request({
 //   method: 'GET'
 // })
-console.log('----')
+// console.log('----')
 
 // 5. axios.all -> 多个请求，一起返回
 axios
@@ -74,8 +74,9 @@ axios
     })
   ])
   .then((res) => {
-    console.log(res[0])
-    console.log(res[1])
+    // console.log(res[0])
+    // console.log(res[1])
+    return res
   })
 
 // 6.请求的拦截器
@@ -100,7 +101,7 @@ axios.interceptors.response.use(
     return res.data
   },
   (err) => {
-    console.log('服务器响应失败')
+    // console.log('服务器响应失败')
     return err
   }
 )

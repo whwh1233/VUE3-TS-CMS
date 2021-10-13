@@ -22,17 +22,17 @@ app.use(router)
 app.use(store)
 app.mount('#app')
 
-console.log(process.env.VUE_APP_BASE_URL)
+// console.log(process.env.VUE_APP_BASE_URL)
 whRequest.request({
   url: '/home/multidata',
   method: 'GET',
   interceptors: {
     requestInterceptor: (config) => {
-      console.log('单次请求的拦截器')
+      // console.log('单次请求的拦截器')
       return config
     },
     responseInterceptor: (res) => {
-      console.log('单次响应的拦截器')
+      // console.log('单次响应的拦截器')
       return res
     }
   }
